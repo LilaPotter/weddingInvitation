@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 700" role="img" aria-label="Placeholder for real photo">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1">
+      <stop offset="0%" stop-color="#edf2f4"/>
+      <stop offset="100%" stop-color="#dfe7ec"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="700" fill="url(#bg)"/>
+  <rect x="120" y="130" width="560" height="430" rx="18" fill="#f8fafb" stroke="#c7d1d7" stroke-width="4"/>
+  <circle cx="400" cy="310" r="110" fill="#dfe7ec" stroke="#c1ced6" stroke-width="4"/>
+  <path d="M260 520 C 310 440, 490 440, 540 520 L 540 560 L 260 560 Z" fill="#d7e0e7" stroke="#c1ced6" stroke-width="4"/>
+  <text x="400" y="620" text-anchor="middle" font-family="Arial, sans-serif" font-size="32" letter-spacing="2" fill="#677d8f">FOTO REAL</text>
+</svg>
