@@ -1,0 +1,300 @@
+<div class="page-shell">
+  <div class="invitation-card">
+    <div class="hero-content reveal">
+      <img
+        class="hero-flower hero-flower-left"
+        src="/flowers/floral-main.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <img
+        class="hero-flower hero-flower-right"
+        src="/flowers/floral-secondary.png"
+        alt=""
+        aria-hidden="true"
+      />
+      <br />
+      <br />
+
+      <br />
+      <!-- <br /> -->
+
+      <!-- <span class="family-spark" aria-hidden="true">✦</span> -->
+      <p class="invitation-copy">Con la bendición de nuestros padres</p>
+      <div class="family-names">
+        <div class="family-column">
+          <span>{{ invitation.parents.groom.father }}</span>
+          <span>{{ invitation.parents.groom.mother }}</span>
+        </div>
+        <span class="family-divider" aria-hidden="true">✧</span>
+        <div class="family-column">
+          <span>{{ invitation.parents.bride.father }}</span>
+          <span>{{ invitation.parents.bride.mother }}</span>
+        </div>
+      </div>
+
+      <br />
+
+      <p class="eyebrow">Nosotros</p>
+      <br />
+
+      <h1 class="couple-names">
+        <span>{{ invitation.couple.groom }}</span>
+        <span class="ampersand">&amp;</span>
+        <span>{{ invitation.couple.bride }}</span>
+      </h1>
+      <!--  <div class="divider" aria-hidden="true"></div> -->
+
+      <p class="invitation-copy">
+        Tenemos el honor de invitarte a celebrar nuestra unión en matrimonio
+      </p>
+
+      <!-- <div class="divider" aria-hidden="true"></div>-->
+
+      <br />
+
+      <div class="date-block">
+        <span class="month-label">NOVIEMBRE 14, 2026</span>
+      </div>
+      <div class="location-label">FALTAN</div>
+
+
+      <div class="countdown-box">
+        <div class="countdown-item">
+          <span class="value">{{ countdown.days }}</span>
+          <span class="label">Días</span>
+        </div>
+        <div class="countdown-item">
+          <span class="value">{{ countdown.hours }}</span>
+          <span class="label">Horas</span>
+        </div>
+        <div class="countdown-item">
+          <span class="value">{{ countdown.minutes }}</span>
+          <span class="label">Min</span>
+        </div>
+        <div class="countdown-item">
+          <span class="value">{{ countdown.seconds }}</span>
+          <span class="label">Seg</span>
+        </div>
+      </div>
+
+    </div>
+    <audio #audioPlayer [src]="tracks[currentTrack]" preload="auto" aria-hidden="true"></audio>
+
+    <div class="music-controls reveal" aria-label="Reproductor de música">
+      <span class="music-label"></span>
+      <div class="music-buttons">
+        <button
+          type="button"
+          class="control-button"
+          aria-label="Anterior"
+          (click)="previousTrack()"
+        >
+          <i class="fa-solid fa-angle-left" aria-hidden="true"></i>
+        </button>
+        <button
+          type="button"
+          class="control-button play-button"
+          [attr.aria-label]="isPlaying ? 'Pausar música' : 'Reproducir música'"
+          (click)="togglePlayback()"
+        >
+          <i
+            class="fa-solid"
+            [class.fa-pause]="isPlaying"
+            [class.fa-play]="!isPlaying"
+            aria-hidden="true"
+          ></i>
+        </button>
+        <button type="button" class="control-button" aria-label="Siguiente" (click)="nextTrack()">
+          <i class="fa-solid fa-angle-right" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <div class="section-divider reveal">
+      <img src="/flowers/floral-secondary.png" alt="" aria-hidden="true" />
+    </div>
+
+    <div class="photo-carousel reveal" aria-label="Galería de fotos">
+      <div
+        class="photo-slide"
+        *ngFor="let photo of photoGallery; let i = index"
+        [class.active]="i === currentPhotoIndex"
+      >
+        <img [src]="photo" [alt]="'Foto del evento ' + (i + 1)" />
+      </div>
+
+      <div class="photo-overlay">
+        <p class="photo-quote">
+          “Y sobre todas estas cosas vestíos de amor, que es el vínculo perfecto.”
+        </p>
+        <span class="photo-reference">- Colosenses 3:14</span>
+      </div>
+
+      <div class="photo-controls" aria-label="Controles de galería">
+        <button
+          type="button"
+          class="photo-nav"
+          (click)="previousPhoto()"
+          aria-label="Foto anterior"
+        >
+          <i class="fa-solid fa-chevron-left"></i>
+        </button>
+        <button type="button" class="photo-nav" (click)="nextPhoto()" aria-label="Siguiente foto">
+          <i class="fa-solid fa-chevron-right"></i>
+        </button>
+      </div>
+    </div>
+
+
+    <div class="event-row">
+            <!-- <span class="panel-kicker">Agenda</span> -->
+      <!-- <h2>ITINERARIO DE ACTIVIDADES</h2> -->
+      <div class="event-column reveal">
+        <article class="event-card" style="--event-color: #58789d; text-align: center">
+          <div aria-hidden="true">
+            <i class="fa-solid fa-church" style="color: var(--event-color)"></i>
+          </div>
+          <p class="event-time">14:00 HRS.</p>
+          <h3>CEREMONIA</h3>
+          <p class="event-place">IGLESIA CRISTIANA SIÓN</p>
+          <p class="event-location">Chihuahua, Chih</p>
+          <a
+            class="location-link"
+            [href]="invitation.ceremony.mapUrl"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            Ver ubicación
+          </a>
+        </article>
+      </div>
+
+      <div class="event-column reveal">
+        <article class="event-card" style="--event-color: ##58789d; text-align: center">
+          <div aria-hidden="true">
+            <i class="fa-solid fa-wine-glass" style="color: var(--event-color)"></i>
+          </div>
+          <p class="event-time">21:00 HRS.</p>
+          <h3>RECEPCIÓN</h3>
+          <p class="event-place">SALÓN HOTEL MARÍA BONITA</p>
+          <p class="event-location">Chihuahua, Chih</p>
+          <a
+            class="location-link"
+            [href]="invitation.reception.mapUrl"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
+            Ver ubicación
+          </a>
+        </article>
+      </div>
+    </div>
+
+    <div class="section-divider reveal">
+      <img src="/flowers/floral-main.png" alt="" aria-hidden="true" />
+    </div>
+
+    <div class="panel-header reveal">
+
+      <!-- <div class="timeline itinerary-timeline" aria-label="Itinerario de actividades">
+        <div class="timeline-row even-row">
+          <div class="timeline-content">
+            <div class="event-label">CEREMONÍA</div>
+            <div class="event-time">2:00 PM</div>
+          </div>
+          <div class="timeline-icon" aria-hidden="true"><i class="fa-solid fa-church"></i></div>
+        </div>
+
+        <div class="timeline-row odd-row">
+          <div class="timeline-icon" aria-hidden="true">
+            <i class="fa-solid fa-cake-candles"></i>
+          </div>
+          <div class="timeline-content">
+            <div class="event-label">RECEPCIÓN</div>
+            <div class="event-time">9:00 PM</div>
+          </div>
+        </div>
+
+
+      </div> -->
+
+      <div class="story-photo venue-photo photo-static-card reveal" aria-label="Foto del salón">
+        <img
+          src="https://cdn2.paraty.es/mariabonita-corpo/images/e0fdf792a4c839f=s1600?v=20260922"
+          alt="Salón Hotel Maria Bonita"
+        />
+        <div class="photo-overlay photo-overlay-static">
+          <p class="photo-quote">
+            “Tu presencia será el mejor regalo y hará que este día sea aún más especial.”
+          </p>
+          <!-- <span class="photo-reference">- Colosenses 3:14</span> -->
+        </div>
+      </div>
+
+      <div class="section-divider reveal">
+        <img src="/flowers/floral-secondary.png" alt="" aria-hidden="true" />
+      </div>
+
+      <div class="panel-header center reveal">
+        <span class="panel-kicker">Detalles</span>
+        <h2>INFORMACIÓN IMPORTANTE</h2>
+      </div>
+
+      <div class="info-grid">
+        <div class="info-block reveal">
+          <div class="info-badge" aria-hidden="true"><i class="fa-solid fa-shirt"></i></div>
+          <h3>CÓDIGO DE VESTIMENTA</h3>
+          <p class="info-note">Etiqueta | Formal</p>
+  
+          <p class="dress-line">Damas: Vestido largo (<i class="fa-solid fa-circle-xmark "></i>  blanco | <i class="fa-solid  fa-circle-xmark"></i> dorado |<i class="fa-solid  fa-circle-xmark"></i> plateado | <i class="fa-solid  fa-circle-xmark"></i>beige)</p>
+          <p class="dress-line">Caballeros: Traje formal | Vaquero formal (camisa lisa sin estampado)</p>
+        </div>
+
+        <div class="info-block reveal">
+          <div class="info-badge" aria-hidden="true"><i class="fa-solid fa-gift"></i></div>
+          <h3>SUGERENCIA DE REGALOS</h3>
+          <p class="gift-text">
+            El mejor regalo es tu presencia, pero si deseas tener un detalle con nosotros, te
+            dejamos estas opciones.
+          </p>
+          <p class="gift-subtitle">LLUVIA DE SOBRES</p>
+        </div>
+
+        <div class="info-block reveal">
+          <div class="info-badge" aria-hidden="true"><i class="fa-solid fa-child"></i></div>
+          <h3>NO NIÑOS</h3>
+          <p class="gift-text">
+           Esperamos contar con tu compañía en un ambiente de calma, buen humor y sin distracciones.
+          </p>
+          <!-- <p class="gift-subtitle">LLUVIA DE SOBRES</p> -->
+        </div>
+        <div class="info-block reveal">
+          <div class="info-badge" aria-hidden="true">
+            <i class="fa-solid fa-calendar-check"></i>
+          </div>
+          <h3>CONFIRMAR ASISTENCIA</h3>
+          <p class="rsvp-copy">Agradecemos que confirmar tu asistencia antes del 01 de Noviembre.</p>
+          <a [href]="whatsappLink" target="_blank" rel="noopener noreferrer" class="cta-button">
+            <i class="fa-brands fa-whatsapp"></i> Confirmar por WhatsApp
+          </a>
+        </div>
+      </div>
+      <div class="section-divider reveal">
+        <img src="/flowers/floral-main.png" alt="" aria-hidden="true" />
+      </div>
+
+      <!-- <div class="thank-you reveal">
+        <p class="thank-you-kicker">Con cariño</p>
+        <h3 class="thank-you-kicker">Gracias por acompañarnos</h3>
+        <p>Tu presencia será el mejor regalo y hará que este día sea aún más especial.</p>
+        <div class="thank-you-badges" aria-label="Mensajes finales">
+          
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</div>
